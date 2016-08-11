@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>看见</title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+var hidden,visibilityChange
+if (typeof document.hidden !== "undefined") {
+  hidden = "hidden";
+  visibilityChange = "visibilitychange";
+} else if (typeof document.mozHidden !== "undefined") {
+  hidden = "mozHidden";
+  visibilityChange = "mozvisibilitychange";
+} else if (typeof document.msHidden !== "undefined") {
+  hidden = "msHidden";
+  visibilityChange = "msvisibilitychange";
+} else if (typeof document.webkitHidden !== "undefined") {
+  hidden = "webkitHidden";
+  visibilityChange = "webkitvisibilitychange";
+}
+function handleVisibilityChange() {
+	console.log(document.visibilityState)
+	if (document[hidden]) {
+		document.title="看不见"
+	}else {
+		document.title="看见"
+	}
+}
+document.addEventListener(visibilityChange, handleVisibilityChange, false);
+</script>
+</html>
