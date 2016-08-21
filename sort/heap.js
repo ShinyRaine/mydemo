@@ -1,7 +1,11 @@
-var heapify = function (arr, i) {
+var exchange = function (arr, i, j) {
+	var temp = arr[i]
+	arr[i] = arr[j]
+	arr[j] = temp
+}
+var heapify = function (arr, i, size) {
 	var l = i*2+1,
 		r = l+1,
-		size = arr.length,
 		max = i
 	if (l < size && arr[l] > arr[max]) {
 		max = l
@@ -10,28 +14,23 @@ var heapify = function (arr, i) {
 		max = r
 	}
 	if (max != i) {
-		var temp = arr[i]
-		arr[i] = arr[max]
-		arr[max] = temp
-		heapify(arr,max)
+		exchange(arr, i, max)
+		heapify(arr, max, size)
 	}
-
 }
 var build = function (arr) {
-	var s = Math.floor( arr.length/2 )
+	var s = Math.floor( arr.length/2 ) - 1
 	for (var i = s; i >= 0 ; i--) {
-		heapify(arr,i)
+		heapify(arr,i,arr.length)
 	}
-	return arr
 }
 var heapSort = function (arr) {
 	build(arr)
-	var result = []
-	for (var i = arr.length; i > 0; i--) {
-		result.unshift(arr.shift())
-		heapify(arr, 0)
+	for (var i = arr.length-1; i > 0; i--) {
+		exchange(arr, 0, i)
+		heapify(arr, 0, i)
 	}
-	return result
+	return arr
 }
 var a = [8, 2,9,6,3,5,7,8]
 heapify(a,0)
