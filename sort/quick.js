@@ -29,6 +29,7 @@ var partition = function(arr, p, r) {
 	exchange(arr,i+1,r)
 	return i+1
 }
+
 var a = [8,2,9,6,3,5,7,8]
 quickSort(a)
 console.log(a)
