@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+var run = function () {
+  var str = new Array(1000000).join('*');
+  var doSomethingWithStr = function () {
+    if (str === 'something')
+      console.log("str was something");
+  };
+  // doSomethingWithStr();
+  var logIt = function () {
+    console.log('interval');
+  }
+  // logIt()
+  return logIt
+};
+var runStr = run()
+runStr()
+
+</script>
+</html>
