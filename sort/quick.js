@@ -7,7 +7,7 @@ var quickSort = function (arr) {
 
 	var sort = function(arr, p, r) {
 		if (p<r) {
-			q = partition(arr, p, r)
+			var q = partition(arr, p, r)
 			sort(arr, p, q-1)
 			sort(arr, q+1, r)
 		}
@@ -18,16 +18,16 @@ var quickSort = function (arr) {
 }
 
 var partition = function(arr, p, r) {
-	x = arr[r]
-	i = p - 1
+	var x = arr[r]
+	var i = p
 	for (var j = p; j < r; j++) {
 		if (arr[j] < x) {
-			i++
 			exchange(arr,i,j)
+			i++
 		}
 	}
-	exchange(arr,i+1,r)
-	return i+1
+	exchange(arr,i,r)
+	return i
 }
 
 var a = [8,2,9,6,3,5,7,8]
