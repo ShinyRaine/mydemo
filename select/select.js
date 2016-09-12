@@ -23,14 +23,13 @@ var select = function(arr, p, r, i) {
 		return a[p]
 	}
 	var q = partition(arr, p, r)
-	console.log(arr,q,p)
 	var k = q - p + 1
 	if (i == k) {
 		return arr[q]
 	}else if (i < k) {
 		return select(arr, p, q-1, i)
 	}else {
-		return select(arr, q+1, r, i)
+		return select(arr, q+1, r, i-k)
 	}
 }
 var a = [2,5,1,3,0,6]
