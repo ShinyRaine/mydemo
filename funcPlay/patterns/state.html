@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+var Light = function() {
+	this.offState = delegata(this, FSM.off)
+	this.onState = delegata(this, FSM.on)
+	this.currState = this.offState
+	this.button = null
+}
+Light.prototype.init = function() {
+	var button = document.createElement('button')
+	var self = this
+	button.innerHTML = '开'
+	console.log('关的')
+	this.button = document.body.appendChild(button)
+	this.button.onclick = function() {
+		self.currState.buttonPressed.call(self)
+	}
+}
+var delegata = function(client, delegation) {
+	return {
+		buttonPressed: function() {
+			return delegation.buttonPressed.apply(client, arguments)
+		}
+	}
+}
+var FSM = {
+	off: {
+		buttonPressed: function() {
+			console.log('关了')
+			this.button.innerHTML = '开'
+			this.currState = this.onState
+		}
+	},
+	on: {
+		buttonPressed: function() {
+			console.log('开了')
+			this.button.innerHTML = '关'
+			this.currState = this.offState
+		}
+	}
+}
+var light = new Light()
+light.init()
+</script>
+</html>
