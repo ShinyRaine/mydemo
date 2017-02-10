@@ -1,4 +1,4 @@
 var connect = require('connect')
-var server = vonnect.createServer()
+var server = connect.createServer()
 server.use(connect.static(__dirname + '/website'))
 server.listen(3000)
