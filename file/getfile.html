@@ -9,25 +9,20 @@
 </body>
 <script type="text/javascript">
 var input = document.getElementsByTagName('input')[0]
+var img = document.getElementsByTagName('img')[0]
 input.onchange = function() {
-	var newsrc = URL.createObjectURL(this.files[0])
-	var img = document.getElementsByTagName('img')[0]
-    var xhr = new XMLHttpRequest();
-    
-    xhr.open("get", newsrc, true);
-    xhr.responseType = "blob";
-    xhr.onload = function() {
-        if (this.status == 200) {
-            var blob = this.response;
-            var base64=window.btoa(blob)
-            var reader = new FileReader(); 
-			reader.readAsDataURL(blob); 
-			reader.onload = function(e){ 
-				img.src = e.target.result
-			}
-        }
-    }
-    xhr.send();
+	// createObjectURL
+	
+	var blobsrc = URL.createObjectURL(this.files[0])
+	img.src = blobsrc;
+	
+	// FileReader
+	
+	// var reader = new FileReader();
+	// reader.readAsDataURL(this.files[0]);
+	// reader.onload = function(e){ 
+	// 	img.src = e.target.result
+	// }
 }
 
 </script>
