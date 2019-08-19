@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <style media="screen">
+            .img {
+                width: 100%;
+            }
+            .view {
+                padding-top: 500px;
+            }
+            .body {
+                height: 100vh;
+                background: #92a8d6;
+                opacity: 0.8
+            }
+
+            .container {
+                /* 滚动容器 */
+                perspective: 1px;
+                padding: 0; overflow: auto;
+                overflow-x: hidden;
+                overflow-y: auto;
+            }
+            .box {
+                /* 视差元素的父级需要3D视角 */
+                transform-style: preserve-3d;
+                position: relative;
+            }
+            .background {
+                /* 滚动比较慢的背景元素 */
+                width: 100%;
+                position: absolute;
+                height: 100%;
+                transform: translateZ(-1px) scale(2);
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="box">
+                <div  class="background">
+                    <img class="img" src="img/1.png" alt="">
+                </div>
+                <div class="view">
+                    <div class="body">
+                        asf
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="page">
+            <div class="container">
+                <div class="background">
+                    <img class="img" src="img/1.png" alt="">
+                </div>
+                <div class="body">
+                    啊啊啊啊
+                </div>
+            </div>
+        </div> -->
+    </body>
+</html>
